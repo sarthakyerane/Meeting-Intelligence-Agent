@@ -1,0 +1,80 @@
+[
+  {
+    "id": "case_1_clear_decisions",
+    "transcript": "Alice: After much discussion, we have decided to use PostgreSQL as our primary database. Bob: Agreed. We also decided to use React for the frontend. Alice: Tom, can you set up the database by next Friday? Tom: Sure, I'll handle that. Alice: Great. Maria, please write the API documentation by end of month. Maria: Will do.",
+    "expected": {
+      "decisions": [
+        {"text": "We have decided to use PostgreSQL as our primary database.", "owner": null},
+        {"text": "We decided to use React for the frontend.", "owner": null}
+      ],
+      "action_items": [
+        {"text": "Set up the database", "owner": "Tom", "deadline": "next Friday"},
+        {"text": "Write the API documentation", "owner": "Maria", "deadline": "end of month"}
+      ],
+      "conflicts": [],
+      "unresolved_questions": []
+    }
+  },
+  {
+    "id": "case_2_unresolved_conflict",
+    "transcript": "John: I strongly believe we should use microservices for scalability. Sarah: That's overkill for our scale. A monolith is much simpler to maintain. John: But we'll need to split later anyway. Sarah: No we won't. Let's just ship fast. No decision was made and the meeting ended.",
+    "expected": {
+      "decisions": [],
+      "action_items": [],
+      "conflicts": [
+        {"party_a": "John", "party_b": "Sarah", "issue": "John prefers microservices for scalability, Sarah prefers a monolith for simplicity. No decision reached.", "resolved": false}
+      ],
+      "unresolved_questions": []
+    }
+  },
+  {
+    "id": "case_3_unresolved_questions",
+    "transcript": "Manager: What is the expected launch date for v2? Dev: We haven't finalized that yet. Manager: Who will handle customer migration? No one answered. Manager: Also, what's the budget for infrastructure? CFO: I'll need to check and get back to you. Let's move on.",
+    "expected": {
+      "decisions": [],
+      "action_items": [],
+      "conflicts": [],
+      "unresolved_questions": [
+        {"question": "What is the expected launch date for v2?", "asker": "Manager"},
+        {"question": "Who will handle customer migration?", "asker": "Manager"},
+        {"question": "What's the budget for infrastructure?", "asker": "Manager"}
+      ]
+    }
+  },
+  {
+    "id": "case_4_multi_owner_actions",
+    "transcript": "We decided to launch the beta on April 1st. Alex will set up the staging environment by March 20. Priya will prepare the press release by March 25. DevOps team will configure the load balancer by March 28. Marketing will finalize the landing page by March 30.",
+    "expected": {
+      "decisions": [
+        {"text": "Launch the beta on April 1st.", "owner": null}
+      ],
+      "action_items": [
+        {"text": "Set up the staging environment", "owner": "Alex", "deadline": "March 20"},
+        {"text": "Prepare the press release", "owner": "Priya", "deadline": "March 25"},
+        {"text": "Configure the load balancer", "owner": "DevOps team", "deadline": "March 28"},
+        {"text": "Finalize the landing page", "owner": "Marketing", "deadline": "March 30"}
+      ],
+      "conflicts": [],
+      "unresolved_questions": []
+    }
+  },
+  {
+    "id": "case_5_mixed",
+    "transcript": "Sam: We agreed last week to go with AWS, so let's proceed with that. Lisa: I still think GCP is cheaper. Sam: The decision has been made. We're using AWS. Lisa: Fine. Sam, can you create the AWS account today? Sam: Yes. Lisa, you handle the cost analysis by Wednesday. Lisa: Okay. What about the CI/CD pipeline setup? Sam: We haven't decided on a tool yet. Let's table that for next meeting.",
+    "expected": {
+      "decisions": [
+        {"text": "We are using AWS.", "owner": null}
+      ],
+      "action_items": [
+        {"text": "Create the AWS account", "owner": "Sam", "deadline": "today"},
+        {"text": "Handle the cost analysis", "owner": "Lisa", "deadline": "Wednesday"}
+      ],
+      "conflicts": [
+        {"party_a": "Sam", "party_b": "Lisa", "issue": "Lisa prefers GCP for cost, Sam insists the decision for AWS was already made.", "resolved": false}
+      ],
+      "unresolved_questions": [
+        {"question": "What CI/CD pipeline tool should we use?", "asker": "Lisa"}
+      ]
+    }
+  }
+]

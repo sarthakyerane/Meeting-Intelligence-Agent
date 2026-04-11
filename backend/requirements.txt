@@ -1,0 +1,33 @@
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+
+# Database
+sqlalchemy==2.0.36
+pymysql==1.1.1
+cryptography==43.0.3
+
+# ChromaDB (embeddings only)
+chromadb==0.5.20
+
+# Transcription + Speaker Diarization (Week 2)
+faster-whisper==1.1.0
+pyannote.audio==3.3.2
+# torch + torchaudio installed separately in Dockerfile via pytorch whl index
+
+# LLM providers
+groq==0.11.0
+ollama==0.3.3                    # optional offline fallback
+
+# Semantic cache
+redis[hiredis]==5.1.1
+numpy==1.26.4
+
+# Config & utilities
+pydantic==2.9.2
+pydantic-settings==2.6.0
+python-dotenv==1.0.1
+httpx==0.27.2
+python-jose==3.3.0
+aiofiles==24.1.0
